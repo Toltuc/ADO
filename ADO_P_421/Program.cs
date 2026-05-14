@@ -36,12 +36,32 @@ namespace ADO_P_421
 			Select("title,release_date,first_name,last_name", "Movies,Directors", "director=director_id");
 			Console.WriteLine($"Количество записей: {Scalar("SELECT COUNT(*) FROM Movies")}");
 #endif
-			Insert("INSERT Directors(director_id,first_name,last_name) VALUES (7, N'Gray', N'Scott')");
-			Select("*", "Directors");
+			//Insert("INSERT Directors(director_id,first_name,last_name) VALUES (7, N'Gray', N'Scott')");
+			//Select("*", "Directors");
+			Console.WriteLine(GetPrimaryKeyColumnName("Movies"));
+			Console.WriteLine(GetLastPrimaryKey("Movies"));
+			Console.WriteLine(GetNextPrimaryKey("Movies"));
 		}
 		static string GetPrimaryKeyColumnName(string table)
 		{
-
+			//@"RAW-строка"
+			string cmd = $@"SELECT	COLUMN_NAME
+FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
+WHERE   INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE.CONSTRAINT_NAME =
+(
+SELECT  CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
+)";
+			return Scalar(cmd).ToString();
+		}
+		static object GetLastPrimaryKey(string table)
+		{
+			string cmd = $"SELECT MAX({GetPrimaryKeyColumnName(table)}) FROM {table}";
+			return Scalar(cmd);
+		}
+		static object GetNextPrimaryKey(string table)
+		{
+			return (int)GetLastPrimaryKey(table) + 1;
 		}
 		static void Insert(string cmd)
 		{
