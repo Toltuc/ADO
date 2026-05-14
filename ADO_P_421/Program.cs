@@ -36,11 +36,29 @@ namespace ADO_P_421
 			Select("title,release_date,first_name,last_name", "Movies,Directors", "director=director_id");
 			Console.WriteLine($"Количество записей: {Scalar("SELECT COUNT(*) FROM Movies")}");
 #endif
-			//Insert("INSERT Directors(director_id,first_name,last_name) VALUES (7, N'Gray', N'Scott')");
+			//Insert($"INSERT Directors(director_id,first_name,last_name) VALUES ({GetNextPrimaryKey("Directors")}, N'Gray', N'Scott')");
+			//Insert
+			//(
+			//	"Directors",
+			//	"director_id,first_name,last_name",
+			//	$"{GetNextPrimaryKey("Directors")},N'Sheldon',N'Letich'"
+			//);
 			//Select("*", "Directors");
-			Console.WriteLine(GetPrimaryKeyColumnName("Movies"));
-			Console.WriteLine(GetLastPrimaryKey("Movies"));
-			Console.WriteLine(GetNextPrimaryKey("Movies"));
+			//Console.WriteLine(GetPrimaryKeyColumnName("Movies"));
+			//Console.WriteLine(GetLastPrimaryKey("Movies"));
+			//Console.WriteLine(GetNextPrimaryKey("Movies"));
+			Insert
+			(
+				"Movies",
+				"movie_id,title,release_date,director",
+				$"{GetNextPrimaryKey("Movies")},N'Avatar',N'2009-12-17',1"
+			);
+			Select
+			(
+			"movie_id,title,release_date,first_name,last_name",
+			"Movies,Directors",
+			"director=director_id"
+			);
 		}
 		static string GetPrimaryKeyColumnName(string table)
 		{
@@ -62,6 +80,22 @@ WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
 		static object GetNextPrimaryKey(string table)
 		{
 			return (int)GetLastPrimaryKey(table) + 1;
+		}
+		static void Insert(string table, string fields, string values)
+		{
+			string pk = GetPrimaryKeyColumnName(table);
+			string[] s_fields = fields.Split(',');
+			string[] s_values = values.Split(',');
+			if (s_fields.Length != s_values.Length) return;
+			string condition = "";
+			for (int i = 0; i < s_fields.Length; i++)
+			{
+				if (s_fields[i] == pk) continue;
+				condition += $"{s_fields[i]}={s_values[i]}";
+				if (i != s_fields.Length - 1) condition += " AND ";
+			}
+			if (Scalar($"SELECT {GetPrimaryKeyColumnName(table)} FROM {table} WHERE {condition}") != null) return;
+			Insert($"INSERT {table}({fields}) VALUES({values})");
 		}
 		static void Insert(string cmd)
 		{
