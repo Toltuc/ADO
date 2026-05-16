@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SQLQuery1 - PRIMARY KEY.sql = SQLQuery1 - PRIMARY KEY.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBtools", "DBtools\DBtools.csproj", "{429CF7FE-FDDD-4143-8F2C-0A033611F948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLLcheck", "DLLcheck\DLLcheck.csproj", "{2523743A-A1B8-44FA-AEBD-09AC34DADC28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{6B48F071-013B-4144-9E8B-EF9656901E35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B48F071-013B-4144-9E8B-EF9656901E35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B48F071-013B-4144-9E8B-EF9656901E35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429CF7FE-FDDD-4143-8F2C-0A033611F948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429CF7FE-FDDD-4143-8F2C-0A033611F948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429CF7FE-FDDD-4143-8F2C-0A033611F948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429CF7FE-FDDD-4143-8F2C-0A033611F948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2523743A-A1B8-44FA-AEBD-09AC34DADC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2523743A-A1B8-44FA-AEBD-09AC34DADC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2523743A-A1B8-44FA-AEBD-09AC34DADC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2523743A-A1B8-44FA-AEBD-09AC34DADC28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
