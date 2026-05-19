@@ -2,6 +2,11 @@
 https://www.youtube.com/playlist?list=PLeqyOOqxeiINE_YP8zrQv_xqmaRDCOrcl
 
 TODO:
+1. Сделать COMMIT;
+2. Создать ветку 'AcademyHW_1';
+3. В созданной ветке загрузить данные на все остальные вкладки;
+
+DONE:
 1. В Solution 'ADO' добавить проект 'DBtools';
 2. В этомпроекте упаковать Connector в DLL-библиотеку;
 3. В Solution 'ADO' добавить проект 'Check', и в нем проветрить Connector из DLL-библиотеки;

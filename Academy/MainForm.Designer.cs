@@ -36,11 +36,18 @@
 			this.tabPageDirections = new System.Windows.Forms.TabPage();
 			this.tabPageDisciplines = new System.Windows.Forms.TabPage();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
+			this.dgvStudents = new System.Windows.Forms.DataGridView();
+			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
+			this.tabPageStudents.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// statusStrip
 			// 
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
 			this.statusStrip.Location = new System.Drawing.Point(0, 379);
 			this.statusStrip.Name = "statusStrip";
 			this.statusStrip.Size = new System.Drawing.Size(746, 22);
@@ -63,6 +70,7 @@
 			// 
 			// tabPageStudents
 			// 
+			this.tabPageStudents.Controls.Add(this.dgvStudents);
 			this.tabPageStudents.Location = new System.Drawing.Point(4, 22);
 			this.tabPageStudents.Name = "tabPageStudents";
 			this.tabPageStudents.Padding = new System.Windows.Forms.Padding(3);
@@ -111,6 +119,23 @@
 			this.tabPageTeachers.Text = "Teachers";
 			this.tabPageTeachers.UseVisualStyleBackColor = true;
 			// 
+			// dgvStudents
+			// 
+			this.dgvStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvStudents.Location = new System.Drawing.Point(3, 26);
+			this.dgvStudents.Name = "dgvStudents";
+			this.dgvStudents.Size = new System.Drawing.Size(735, 324);
+			this.dgvStudents.TabIndex = 0;
+			// 
+			// toolStripStatusLabel
+			// 
+			this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+			this.toolStripStatusLabel.Size = new System.Drawing.Size(112, 17);
+			this.toolStripStatusLabel.Text = "toolStripStatusLabel";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,7 +146,11 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Atomic Academy P_421";
+			this.statusStrip.ResumeLayout(false);
+			this.statusStrip.PerformLayout();
 			this.tabControl.ResumeLayout(false);
+			this.tabPageStudents.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -136,6 +165,8 @@
 		private System.Windows.Forms.TabPage tabPageDirections;
 		private System.Windows.Forms.TabPage tabPageDisciplines;
 		private System.Windows.Forms.TabPage tabPageTeachers;
+		private System.Windows.Forms.DataGridView dgvStudents;
+		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
 	}
 }
 

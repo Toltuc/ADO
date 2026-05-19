@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace DBtools
@@ -63,29 +64,55 @@ WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
 			connection.Close();
 			return value;
 		}
-		public void Select(string fields, string tables, string condition = "")
+		public DataTable Select(string fields, string tables, string condition = "")
 		{
 			string cmd = $"SELECT {fields} FROM {tables} ";
 			if (condition != "" && condition != " ") cmd += $" WHERE {condition}";
-			Select(cmd);
+			return Select(cmd);
 		}
-		public void Select(string cmd)
+		public DataTable Select(string cmd)
 		{
+			DataTable table = new DataTable();
 			SqlCommand command = new SqlCommand(cmd, connection);
 			connection.Open();
 			SqlDataReader reader = command.ExecuteReader();
 			for (int i = 0; i < reader.FieldCount; i++)
+			{
+				table.Columns.Add(reader.GetName(i));
 				Console.Write(reader.GetName(i));
+			}
 			Console.WriteLine();
 			while (reader.Read())
 			{
+				DataRow row = table.NewRow();
 				//Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}");
 				for (int i = 0; i < reader.FieldCount; i++)
+				{
+					row[i] = reader[i];
 					Console.Write(reader[i] + "\t");
+				}
 				Console.WriteLine();
+				table.Rows.Add(row);
 			}
 			reader.Close();
 			connection.Close();
+			return table;
+		}
+		public DataTable Load(string fields, string tables, string condition = "")
+		{
+			string cmd = $"SELECT {fields} FROM {tables}";
+			if (condition != "") cmd += $" WHERE {condition}";
+			return Load(cmd);
+		}
+		public DataTable Load(string cmd)
+		{
+			DataTable table = new DataTable();
+			SqlCommand command = new SqlCommand(cmd, connection);
+			connection.Open();
+			SqlDataReader reader = command.ExecuteReader();
+			table.Load(reader);
+			connection.Close();
+			return table;
 		}
 	}
 }
