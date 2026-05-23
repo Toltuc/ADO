@@ -53,18 +53,25 @@ namespace Academy
 			tabControl.SelectedIndex = 0;
 			tabControl_SelectedIndexChanged(tabControl, null);
 			////////////////////////////////////
-			DataTable tGroupsDirection = connector.Load("SELECT * FROM Directions");
-			DataRow rowDefault = tGroupsDirection.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			tGroupsDirection.Rows.InsertAt(rowDefault,0);
-			cbGroupsDirection.DataSource = tGroupsDirection;
-			cbGroupsDirection.DisplayMember = "direction_name";
-			cbGroupsDirection.ValueMember = "direction_id";
 			//cbGroupsDirection.SelectedValue = 0;
+			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
+			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+			LoadComboBoxFromBase(cbStudentsDiewction, "Directions");
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
+		void LoadComboBoxFromBase(ComboBox comboBox, string table)
+		{
+			string column = table.Substring(0, table.Length - 1).ToLower();
+			DataTable dt = connector.Load($"SELECT {column}_id,{column}_name FROM {table}");
+			DataRow rowDefault = dt.NewRow();
+			rowDefault[0] = 0;
+			rowDefault[1] = "Все";
+			dt.Rows.InsertAt(rowDefault, 0);
+			comboBox.DataSource = dt;
+			comboBox.DisplayMember = $"{column}_name";
+			comboBox.ValueMember = $"{column}_id";
+		}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -82,7 +89,7 @@ namespace Academy
 		{
 			tables[1].DataSource = connector.Load
 				(
-				queries[1].ToString() + 
+				queries[1].ToString() +
 				(cbGroupsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbGroupsDirection.SelectedValue}")
 				);
 			//Console.WriteLine($"SelectedIndex:{cbGroupsDirection.SelectedIndex}");
