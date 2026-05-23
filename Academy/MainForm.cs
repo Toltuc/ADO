@@ -86,7 +86,6 @@ namespace Academy
 			tables[i].Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 		}
 
-
 		private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
 		{
 			tables[1].DataSource = connector.Load
@@ -99,6 +98,7 @@ namespace Academy
 			//Console.WriteLine($"SelectedText:{cbGroupsDirection.SelectedText}");
 			//Console.WriteLine($"SelectedValue:{cbGroupsDirection.SelectedValue}");
 			//Console.WriteLine(cbGroupsDirection.SelectedValue.GetType());
+			toolStripStatusLabel.Text = $"Количество записей: {tables[1].RowCount - 1}";
 		}
 
 		private void cbStudentsGroup_SelectionChangeCommitted(object sender, EventArgs e)
@@ -110,6 +110,7 @@ namespace Academy
 				queries[0].ToString() +
 				(cbStudentsGroup.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsGroup.SelectedValue}")
 				);
+			toolStripStatusLabel.Text = $"Количество записей: {tables[0].RowCount - 1}";
 		}
 
 		private void cbStudentsDirection_SelectionChangeCommitted(object sender, EventArgs e)
@@ -125,6 +126,7 @@ namespace Academy
 				"Groups", 
 				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" direction={cbStudentsDirection.SelectedValue}")
 			);
+			toolStripStatusLabel.Text = $"Количество записей: {tables[0].RowCount - 1}";
 		}
 	}
 }
