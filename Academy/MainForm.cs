@@ -84,6 +84,8 @@ namespace Academy
 			//for (int c = 0; c < tables[i].ColumnCount-1; c++)tables[i].Columns[c].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			tables[i].Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+			//TODO: drop filters
 		}
 
 		private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
