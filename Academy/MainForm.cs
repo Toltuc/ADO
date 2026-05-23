@@ -56,7 +56,7 @@ namespace Academy
 			//cbGroupsDirection.SelectedValue = 0;
 			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
 			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
-			LoadComboBoxFromBase(cbStudentsDiewction, "Directions");
+			LoadComboBoxFromBase(cbStudentsDirection, "Directions");
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
@@ -97,6 +97,24 @@ namespace Academy
 			//Console.WriteLine($"SelectedText:{cbGroupsDirection.SelectedText}");
 			//Console.WriteLine($"SelectedValue:{cbGroupsDirection.SelectedValue}");
 			//Console.WriteLine(cbGroupsDirection.SelectedValue.GetType());
+		}
+
+		private void cbStudentsGroup_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			tables[0].DataSource = connector.Load
+				(
+				queries[0].ToString() +
+				(cbStudentsGroup.SelectedIndex == 0 ? "" : $" AND [group]={cbStudentsGroup.SelectedValue}")
+				);
+		}
+
+		private void cbStudentsDirection_SelectionChangeCommitted(object sender, EventArgs e)
+		{
+			tables[0].DataSource = connector.Load
+				(
+				queries[0] + 
+				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbStudentsDirection.SelectedValue}")
+				);
 		}
 	}
 }
