@@ -111,6 +111,7 @@ WHERE   CONSTRAINT_TYPE = N'PRIMARY KEY' AND TABLE_NAME = N'{table}'
 			connection.Open();
 			SqlDataReader reader = command.ExecuteReader();
 			table.Load(reader);
+			reader.Close();
 			connection.Close();
 			return table;
 		}
