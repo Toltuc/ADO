@@ -53,7 +53,12 @@ namespace Academy
 			tabControl.SelectedIndex = 0;
 			tabControl_SelectedIndexChanged(tabControl, null);
 			////////////////////////////////////
-			cbGroupsDirection.DataSource = connector.Load("SELECT * FROM Directions");
+			DataTable tGroupsDirection = connector.Load("SELECT * FROM Directions");
+			DataRow rowDefault = tGroupsDirection.NewRow();
+			rowDefault[0] = 0;
+			rowDefault[1] = "Все";
+			tGroupsDirection.Rows.InsertAt(rowDefault,0);
+			cbGroupsDirection.DataSource = tGroupsDirection;
 			cbGroupsDirection.DisplayMember = "direction_name";
 			cbGroupsDirection.ValueMember = "direction_id";
 			//cbGroupsDirection.SelectedValue = 0;
@@ -75,7 +80,11 @@ namespace Academy
 
 		private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
 		{
-			tables[1].DataSource = connector.Load(queries[1].ToString() + $" AND direction={cbGroupsDirection.SelectedValue}");
+			tables[1].DataSource = connector.Load
+				(
+				queries[1].ToString() + 
+				(cbGroupsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbGroupsDirection.SelectedValue}")
+				);
 			//Console.WriteLine($"SelectedIndex:{cbGroupsDirection.SelectedIndex}");
 			//Console.WriteLine($"SelectedItem:{cbGroupsDirection.SelectedItem}");
 			//Console.WriteLine($"SelectedText:{cbGroupsDirection.SelectedText}");
