@@ -1,0 +1,6 @@
+d:\source\repos\ADO\DBtools\obj\Debug\DBtools.csproj.AssemblyReference.cache
+d:\source\repos\ADO\DBtools\obj\Debug\DBtools.csproj.CoreCompileInputs.cache
+d:\source\repos\ADO\DBtools\bin\Debug\DBtools.dll
+d:\source\repos\ADO\DBtools\bin\Debug\DBtools.pdb
+d:\source\repos\ADO\DBtools\obj\Debug\DBtools.dll
+d:\source\repos\ADO\DBtools\obj\Debug\DBtools.pdb

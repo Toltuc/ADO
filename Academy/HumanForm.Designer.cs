@@ -1,4 +1,4 @@
-﻿namespace Academy
+namespace Academy
 {
 	partial class HumanForm
 	{
@@ -43,6 +43,7 @@
 			this.btnOK = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.pictureBoxPhoto = new System.Windows.Forms.PictureBox();
+			this.labelID = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -173,18 +174,21 @@
 			// 
 			// btnOK
 			// 
+			this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnOK.Location = new System.Drawing.Point(381, 325);
+			this.btnOK.Location = new System.Drawing.Point(408, 379);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(105, 35);
 			this.btnOK.TabIndex = 12;
 			this.btnOK.Text = "OK";
 			this.btnOK.UseVisualStyleBackColor = true;
+			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.btnCancel.Location = new System.Drawing.Point(496, 325);
+			this.btnCancel.Location = new System.Drawing.Point(523, 379);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(105, 35);
 			this.btnCancel.TabIndex = 13;
@@ -196,15 +200,25 @@
 			this.pictureBoxPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.pictureBoxPhoto.Location = new System.Drawing.Point(430, 13);
 			this.pictureBoxPhoto.Name = "pictureBoxPhoto";
-			this.pictureBoxPhoto.Size = new System.Drawing.Size(171, 219);
+			this.pictureBoxPhoto.Size = new System.Drawing.Size(198, 267);
 			this.pictureBoxPhoto.TabIndex = 14;
 			this.pictureBoxPhoto.TabStop = false;
+			// 
+			// labelID
+			// 
+			this.labelID.AutoSize = true;
+			this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelID.Location = new System.Drawing.Point(17, 388);
+			this.labelID.Name = "labelID";
+			this.labelID.Size = new System.Drawing.Size(0, 24);
+			this.labelID.TabIndex = 15;
 			// 
 			// HumanForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(620, 372);
+			this.ClientSize = new System.Drawing.Size(644, 426);
+			this.Controls.Add(this.labelID);
 			this.Controls.Add(this.pictureBoxPhoto);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOK);
@@ -224,6 +238,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "HumanForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "HumanForm";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).EndInit();
 			this.ResumeLayout(false);
@@ -248,5 +263,6 @@
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.PictureBox pictureBoxPhoto;
+		private System.Windows.Forms.Label labelID;
 	}
 }

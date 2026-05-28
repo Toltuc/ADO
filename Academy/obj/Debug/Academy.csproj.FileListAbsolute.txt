@@ -1,0 +1,14 @@
+d:\source\repos\ADO\Academy\obj\Debug\Academy.csproj.AssemblyReference.cache
+d:\source\repos\ADO\Academy\obj\Debug\Academy.HumanForm.resources
+d:\source\repos\ADO\Academy\obj\Debug\Academy.StudentForm.resources
+d:\source\repos\ADO\Academy\obj\Debug\Academy.Properties.Resources.resources
+d:\source\repos\ADO\Academy\obj\Debug\Academy.csproj.GenerateResource.cache
+d:\source\repos\ADO\Academy\obj\Debug\Academy.csproj.CoreCompileInputs.cache
+d:\source\repos\ADO\Academy\bin\Debug\Academy.exe.config
+d:\source\repos\ADO\Academy\bin\Debug\Academy.exe
+d:\source\repos\ADO\Academy\bin\Debug\Academy.pdb
+d:\source\repos\ADO\Academy\bin\Debug\DBtools.dll
+d:\source\repos\ADO\Academy\bin\Debug\DBtools.pdb
+d:\source\repos\ADO\Academy\obj\Debug\Academy.csproj.Up2Date
+d:\source\repos\ADO\Academy\obj\Debug\Academy.exe
+d:\source\repos\ADO\Academy\obj\Debug\Academy.pdb

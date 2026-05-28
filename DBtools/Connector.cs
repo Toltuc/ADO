@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -14,7 +14,7 @@ namespace DBtools
 		}
 		public string GetPrimaryKeyColumnName(string table)
 		{
-			//@"RAW-строка"
+			// @"RAW-строка"
 			string cmd = $@"SELECT	COLUMN_NAME
 FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
 WHERE   INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE.CONSTRAINT_NAME =

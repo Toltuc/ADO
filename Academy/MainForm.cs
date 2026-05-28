@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,38 +42,30 @@ namespace Academy
 			InitializeComponent();
 			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
 			connector = new Connector(ConfigurationManager.ConnectionStrings["P_421_Import"].ConnectionString);
-			//dgvStudents.DataSource = connector.Load("SELECT * FROM Students");
-			/*dgvStudents.DataSource = connector.Load
-				(
-				"stud_id,last_name,first_name,middle_name,birth_date,group_name,direction_name",
-				"Students,Groups,Directions",
-				"[group]=group_id AND direction=direction_id"
-				);
-			toolStripStatusLabel.Text = $"Количество записей: {dgvStudents.RowCount - 1}";*/
 			tabControl.SelectedIndex = 0;
 			tabControl_SelectedIndexChanged(tabControl, null);
 			////////////////////////////////////
 			//cbGroupsDirection.SelectedValue = 0;
-			LoadComboBoxFromBase(cbGroupsDirection, "Directions");
-			LoadComboBoxFromBase(cbStudentsGroup, "Groups");
-			LoadComboBoxFromBase(cbStudentsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbGroupsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbStudentsDirection, "Directions");
+			DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
-		void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
-		{
-			string column = table.Substring(0, table.Length - 1).ToLower();
-			string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
-			if (condition != "") cmd += $" WHERE {condition}";
-			DataTable dt = connector.Load(cmd);
-			DataRow rowDefault = dt.NewRow();
-			rowDefault[0] = 0;
-			rowDefault[1] = "Все";
-			dt.Rows.InsertAt(rowDefault, 0);
-			comboBox.DataSource = dt;
-			comboBox.DisplayMember = $"{column}_name";
-			comboBox.ValueMember = $"{column}_id";
-		}
+		//void LoadComboBoxFromBase(ComboBox comboBox, string table, string condition = "")
+		//{
+		//	string column = table.Substring(0, table.Length - 1).ToLower();
+		//	string cmd = $"SELECT {column}_id,{column}_name FROM {table}";
+		//	if (condition != "") cmd += $" WHERE {condition}";
+		//	DataTable dt = connector.Load(cmd);
+		//	DataRow rowDefault = dt.NewRow();
+		//	rowDefault[0] = 0;
+		//	rowDefault[1] = "Все";
+		//	dt.Rows.InsertAt(rowDefault, 0);
+		//	comboBox.DataSource = dt;
+		//	comboBox.DisplayMember = $"{column}_name";
+		//	comboBox.ValueMember = $"{column}_id";
+		//}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -85,7 +77,23 @@ namespace Academy
 			tables[i].Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 			tables[i].Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-			//TODO: drop filters
+			// Сброс фильтров при переключении вкладок
+			ResetFilters(i);
+		}
+
+		void ResetFilters(int tabIndex)
+		{
+			switch (tabIndex)
+			{
+				case 0: // Students
+					cbStudentsGroup.SelectedIndex = 0;
+					cbStudentsDirection.SelectedIndex = 0;
+					DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+					break;
+				case 1: // Groups
+					cbGroupsDirection.SelectedIndex = 0;
+					break;
+			}
 		}
 
 		private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
@@ -122,7 +130,7 @@ namespace Academy
 				queries[0] + 
 				(cbStudentsDirection.SelectedIndex == 0 ? "" : $" AND direction={cbStudentsDirection.SelectedValue}")
 				);
-			LoadComboBoxFromBase
+			DataBase.LoadComboBoxFromBase
 			(
 				cbStudentsGroup, 
 				"Groups", 
@@ -133,8 +141,18 @@ namespace Academy
 
 		private void btnAddStudent_Click(object sender, EventArgs e)
 		{
-			HumanForm humanForm = new HumanForm();
-			humanForm.ShowDialog();
+			StudentForm studentForm = new StudentForm();
+			studentForm.ShowDialog();
+			// Обновляем таблицу студентов и счетчик после добавления
+			tabControl_SelectedIndexChanged(tabControl, null);
+		}
+
+		private void btnAddTeacher_Click(object sender, EventArgs e)
+		{
+			TeacherForm teacherForm = new TeacherForm();
+			teacherForm.ShowDialog();
+			// Обновляем таблицу преподавателей и счетчик после добавления
+			tabControl_SelectedIndexChanged(tabControl, null);
 		}
 	}
 }

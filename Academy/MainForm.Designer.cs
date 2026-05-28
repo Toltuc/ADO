@@ -1,4 +1,4 @@
-﻿namespace Academy
+namespace Academy
 {
 	partial class MainForm
 	{
@@ -46,6 +46,7 @@
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
 			this.btnAddStudent = new System.Windows.Forms.Button();
+			this.btnAddTeacher = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -220,6 +221,7 @@
 			// 
 			// tabPageTeachers
 			// 
+			this.tabPageTeachers.Controls.Add(this.btnAddTeacher);
 			this.tabPageTeachers.Controls.Add(this.dgvTeachers);
 			this.tabPageTeachers.Location = new System.Drawing.Point(4, 22);
 			this.tabPageTeachers.Name = "tabPageTeachers";
@@ -251,6 +253,17 @@
 			this.btnAddStudent.Text = "Добавить";
 			this.btnAddStudent.UseVisualStyleBackColor = true;
 			this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
+			// 
+			// btnAddTeacher
+			// 
+			this.btnAddTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAddTeacher.Location = new System.Drawing.Point(655, 6);
+			this.btnAddTeacher.Name = "btnAddTeacher";
+			this.btnAddTeacher.Size = new System.Drawing.Size(75, 23);
+			this.btnAddTeacher.TabIndex = 1;
+			this.btnAddTeacher.Text = "Добавить";
+			this.btnAddTeacher.UseVisualStyleBackColor = true;
+			this.btnAddTeacher.Click += new System.EventHandler(this.btnAddTeacher_Click);
 			// 
 			// MainForm
 			// 
@@ -299,6 +312,6 @@
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.ComboBox cbStudentsGroup;
 		private System.Windows.Forms.Button btnAddStudent;
+		private System.Windows.Forms.Button btnAddTeacher;
 	}
 }
-
