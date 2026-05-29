@@ -86,12 +86,12 @@ namespace Academy
 			switch (tabIndex)
 			{
 				case 0: // Students
-					cbStudentsGroup.SelectedIndex = 0;
 					cbStudentsDirection.SelectedIndex = 0;
-					DataBase.LoadComboBoxFromBase(cbStudentsGroup, "Groups");
+					cbStudentsDirection_SelectionChangeCommitted(cbStudentsDirection, null);
 					break;
 				case 1: // Groups
 					cbGroupsDirection.SelectedIndex = 0;
+					cbGroupsDirection_SelectionChangeCommitted(cbGroupsDirection, null);
 					break;
 			}
 		}
@@ -142,7 +142,7 @@ namespace Academy
 		private void btnAddStudent_Click(object sender, EventArgs e)
 		{
 			StudentForm studentForm = new StudentForm();
-			studentForm.ShowDialog();
+			studentForm.ShowDialog(this);
 			// Обновляем таблицу студентов и счетчик после добавления
 			tabControl_SelectedIndexChanged(tabControl, null);
 		}
@@ -150,7 +150,7 @@ namespace Academy
 		private void btnAddTeacher_Click(object sender, EventArgs e)
 		{
 			TeacherForm teacherForm = new TeacherForm();
-			teacherForm.ShowDialog();
+			teacherForm.ShowDialog(this);
 			// Обновляем таблицу преподавателей и счетчик после добавления
 			tabControl_SelectedIndexChanged(tabControl, null);
 		}
