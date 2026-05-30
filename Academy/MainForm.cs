@@ -86,12 +86,18 @@ namespace Academy
 			switch (tabIndex)
 			{
 				case 0: // Students
-					cbStudentsDirection.SelectedIndex = 0;
-					cbStudentsDirection_SelectionChangeCommitted(cbStudentsDirection, null);
+					if (cbStudentsDirection.Items.Count > 0)
+					{
+						cbStudentsDirection.SelectedIndex = 0;
+						cbStudentsDirection_SelectionChangeCommitted(cbStudentsDirection, null);
+					}
 					break;
 				case 1: // Groups
-					cbGroupsDirection.SelectedIndex = 0;
-					cbGroupsDirection_SelectionChangeCommitted(cbGroupsDirection, null);
+					if (cbGroupsDirection.Items.Count > 0)
+					{
+						cbGroupsDirection.SelectedIndex = 0;
+						cbGroupsDirection_SelectionChangeCommitted(cbGroupsDirection, null);
+					}
 					break;
 			}
 		}
