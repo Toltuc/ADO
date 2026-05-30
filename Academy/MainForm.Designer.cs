@@ -28,7 +28,6 @@ namespace Academy
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tabControl = new System.Windows.Forms.TabControl();
@@ -272,7 +271,6 @@ namespace Academy
 			this.ClientSize = new System.Drawing.Size(746, 401);
 			this.Controls.Add(this.tabControl);
 			this.Controls.Add(this.statusStrip);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Atomic Academy P_421";
 			this.statusStrip.ResumeLayout(false);
